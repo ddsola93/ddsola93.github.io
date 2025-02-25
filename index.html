@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Headings built into Html code -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Links added for web manifest -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <title>Weather Widget</title>
+    <!-- Links added for web manifest -->
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
     <link
       rel="apple-touch-icon"
@@ -44,10 +47,14 @@
    T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" sizes="192x192" href="C:\Users\ddsol\OneDrive\Desktop\web development\HW_Assignments\Ass_1\ddsola93.github.io\assets\cloud-sun-fill.svg">
+    <link rel="icon" sizes="512x512" href="C:\Users\ddsol\OneDrive\Desktop\web development\HW_Assignments\Ass_1\ddsola93.github.io\assets\cloud-sun-fill.svg">
+    <!-- Custom css created -->
     <style>
       body {
         font-family: Arial, sans-serif;
-        background-color: #f0f8ff;
+        background-color: #600ba1;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -58,46 +65,89 @@
         width: 300px;
         padding: 20px;
         border-radius: 10px;
-        background-color: #fff;
+        background-color: #c2b44d;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
+      /* Header of page css code */
       h1 {
         text-align: center;
         font-size: 24px;
-        color: #333;
+        color: #600ba1;
       }
       .weather-info {
         text-align: center;
         margin-top: 20px;
       }
+      /* Custom CSS for Bootstrap Icons */
+      .bi {
+        font-size: 3rem; /* Adjust the size of the icons */
+        color: #600ba1;
+        margin-right: 10px; /* Add some space between the icon and text */
+      }
+
+      /* Custom styles for the thermometer-sun icon */
+      .bi-thermometer-sun {
+        color: #600ba1;
+      }
+
+      /* Custom styles for the moisture icon */
+      .bi-moisture {
+        color: #600ba1;
+      }
+
+      /* Custom styles for other weather icons */
+      .bi-sun {
+        color: #600ba1;
+      }
+
+      .bi-cloud {
+        color: #600ba1;
+      }
+
+      .bi-cloud-rain {
+        color: #600ba1;
+      }
+
+      .bi-snow {
+        color: #600ba1;
+      }
+
+      .bi-question-circle {
+        color: #600ba1;
+      }
+
       footer {
         text-align: center;
         margin-top: 30px;
         font-size: 14px;
-        color: #777;
+        color: #0f0909;
       }
       footer a {
         text-decoration: none;
-        color: #007bff;
+        color: #600ba1;
       }
     </style>
   </head>
   <body>
+    <!-- card created for the weather content  -->
     <div class="card d-flex justify-content-center">
-      <h1>Cookeville's Weather Widget</h1>
+      <h1>Cookeville's Weather</h1>
       <div class="weather-info" id="weather-info">
+        <!-- bootstrap icons picked out and used -->
+        <i class="bi bi-thermometer-sun"></i>
         <!-- //ids used for querySelector below -->
-        <p id="temperature">
-          Temperature: --
-          <i class="bi bi-thermometer-sun"></i>
-        </p>
-        <p id="humidity">
-          Humidity --
-          <i class="bi bi-thermometer-sun"></i>
-        </p>
+        <p id="temperature">Temperature: --</p>
+        <i class="bi bi-moisture"></i>
+        <p id="humidity">Humidity --</p>
+        <hr width="100%" size="2" color="purple" noshade>
+      </h>
+      <div class="mb-3">
+        <p id="condition">Current Condition:</p>
         <p id="icon"></p>
       </div>
+      </div>
       <footer>
+        <!-- link to website used for data pulled for weather info -->
         <p class="text-center">
           Data courtesy of
           <a href="https://open-meteo.com/" target="_blank">Open Meteo</a>
@@ -118,17 +168,22 @@
       }
       const objData = await objResponse.json();
       const currentData = objData.current;
-
+      //creating variables to pull from currentData table to get the temperature item from the list
       let temp = currentData.temperature_2m;
-      let strTemp = `<p>Temperature: ${temp}°F</p>`;
+      let strTemp = `<p >Temperature: ${temp}°F</p>`;
       document.querySelector("#temperature").innerHTML = strTemp;
 
+      //creating variables to pull from currentData table to get the humidity item from the list
       let humidity = currentData.relative_humidity_2m;
       let strHumidity = `<p>Humidity: ${humidity}%</p>`;
       document.querySelector("#humidity").innerHTML = strHumidity;
 
-      // // Set weather icon based on weather condition
+      // Set the weather icon based on the weather condition
       const weatherIcon = document.querySelector("#icon");
+
+      // Set weather icon based on weather condition
+      // Taking weather_code and associating it with icons from bootstrap
+
       if (currentData.weather_code === 0) {
         weatherIcon.className = "bi bi-sun";
       } else if (currentData.weather_code === 2) {
@@ -140,7 +195,7 @@
       } else {
         weatherIcon.className = "bi bi-question-circle";
       }
-
+      // Showing myself that data that is being pulled on the console
       console.log(currentData);
       console.log(temp);
       console.log(humidity);

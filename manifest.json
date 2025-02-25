@@ -8,12 +8,12 @@
     "theme_color": "#ffffff",
     "icons": [
       {
-        "src": "images/icon-192x192.png",
+        "src": "C:\Users\ddsol\OneDrive\Desktop\web development\HW_Assignments\Ass_1\ddsola93.github.io\assets\cloud-sun-fill.svg",
         "sizes": "192x192",
         "type": "image/png"
       },
       {
-        "src": "images/icon-512x512.png",
+        "src": "C:\Users\ddsol\OneDrive\Desktop\web development\HW_Assignments\Ass_1\ddsola93.github.io\assets\cloud-sun-fill.svg",
         "sizes": "512x512",
         "type": "image/png"
       }
